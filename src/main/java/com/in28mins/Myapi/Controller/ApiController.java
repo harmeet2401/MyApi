@@ -9,15 +9,15 @@ public class ApiController {
 
     @GetMapping(path = "/hey")
     public String getWelcomeMsg(){
-        return "!!!! welcome to openshift rest api deployed on openshift and deployed throug CI/CD & WEBHOOKS Using JSON post hit to openshift!!!!";
+        return "!!!! welcome to my rest api deployed to Openshift using webhook!!!!";
     }
 
     @GetMapping(path = "/User")
     public User getUser()
     {
             User user = new User();
-            user.setAdd("Plotno 63 wz 31 b3/8 ff navyug block");
-            user.setName("HARMEET SINGH - Phoenix Cell DT3 Cell");
+            user.setAdd("Plotno 63 wz 31 b3/8 ff navyug ");
+            user.setName("HARMEET SINGH - Phoenix Cell DT3 ");
             return user;
     }
 }
