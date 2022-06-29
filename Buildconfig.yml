@@ -1,0 +1,33 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: my-api-git-ver3
+  namespace: meet14764-dev
+  labels:
+    app: my-api-git-ver3
+spec:
+  nodeSelector: null
+    to:
+      kind: ImageStreamTag
+      name: 'my-api-git-ver3'
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        namespace: openshift
+        name: 'java:openjdk-17-ubi8'
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/harmeet2401/MyApi.git'
+    contextDir: /
+status:
+  lastVersion: 1
+  imageChangeTriggers:
+    - lastTriggeredImageID: >-
+        image-registry.openshift-image-registry.svc:5000/openshift/java@sha256:210e5ce062df2cc601fb8ce4be4848fe25d87238cd44aa4abe833eb3d4893640
+      from:
+        namespace: openshift
+        name: 'java:openjdk-17-ubi8'
+      lastTriggerTime: '2022-06-29T12:33:53Z'
