@@ -1,0 +1,26 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: app-rest-route
+spec:
+  host: app-rest-route-meet14764-dev.apps.sandbox.x8i5.p1.openshiftapps.com
+  to:
+    kind: Service
+    name: api-rest
+    weight: 100
+  port:
+    targetPort: 8080-tcp
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  wildcardPolicy: None
+status:
+  ingress:
+    - host: pp-rest-route-meet14764-dev.apps.sandbox.x8i5.p1.openshiftapps.com
+      routerName: default
+      conditions:
+        - type: Admitted
+          status: 'True'
+          lastTransitionTime: '2022-06-29T12:33:54Z'
+      wildcardPolicy: None
+      routerCanonicalHostname: router-default.apps.sandbox.x8i5.p1.openshiftapps.com
