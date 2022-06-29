@@ -9,7 +9,7 @@ public class ApiController {
 
     @GetMapping(path = "/hey")
     public String getWelcomeMsg(){
-        return "!!!! welcome to openshift rest api deployed on openshift and deployed throug CI/CD & WEBHOOKS Using JSON poSt request!!!!";
+        return "!!!! welcome to openshift rest api deployed on openshift and deployed throug CI/CD & WEBHOOKS Using JSON post hit to openshift!!!!";
     }
 
     @GetMapping(path = "/User")
