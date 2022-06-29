@@ -9,7 +9,7 @@ public class ApiController {
 
     @GetMapping(path = "/hey")
     public String getWelcomeMsg(){
-        return "!!!! welcome to openshift rest api deployed on openshift!!!!";
+        return "!!!! welcome to openshift rest api deployed on openshift and deployed throug CI/CD integration using webhooks!!!!";
     }
 
     @GetMapping(path = "/User")
@@ -17,7 +17,7 @@ public class ApiController {
     {
             User user = new User();
             user.setAdd("Plotno 63 wz 31 b3/8 ff navyug block");
-            user.setName("HARMEET SINGH");
+            user.setName("HARMEET SINGH - Phoenix");
             return user;
     }
 }
