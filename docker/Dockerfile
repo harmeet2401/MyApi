@@ -13,5 +13,5 @@ FROM openjdk:11-jdk
 
 COPY --from=0 /build/target/Myapi-0.0.1-SNAPSHOT.jar /app/jar/myapp.jar
 # set the startup command to execute the jar
-EXPOSE 8082
-ENTRYPOINT [ "java", "-jar", "/app/jar/myapp.jar", "--server.port=8082" ]
+EXPOSE 8080
+ENTRYPOINT [ "java", "-jar", "/app/jar/myapp.jar", "--server.port=8080" ]
