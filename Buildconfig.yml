@@ -1,15 +1,48 @@
 kind: BuildConfig
 apiVersion: build.openshift.io/v1
 metadata:
-  name: my-api-git-ver3
+  name: myapi
   namespace: meet14764-dev
-  labels:
-    app: my-api-git-ver3
+  uid: 51d9b1dd-87d2-4383-bb7e-2d72fcb6cd14
+  resourceVersion: '1452339582'
+  generation: 2
+  creationTimestamp: '2022-06-30T07:53:32Z'
+  managedFields:
+    - manager: Go-http-client
+      operation: Update
+      apiVersion: build.openshift.io/v1
+      time: '2022-06-30T07:53:32Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:imageChangeTriggers': {}
+          'f:lastVersion': {}
+    - manager: Mozilla
+      operation: Update
+      apiVersion: build.openshift.io/v1
+      time: '2022-06-30T07:53:32Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:runPolicy': {}
+          'f:source':
+            'f:git':
+              .: {}
+              'f:ref': {}
+              'f:uri': {}
+            'f:type': {}
+          'f:strategy':
+            'f:sourceStrategy':
+              .: {}
+              'f:from': {}
+            'f:type': {}
+          'f:triggers': {}
 spec:
   nodeSelector: null
-    to:
-      kind: ImageStreamTag
-      name: 'my-api-git-ver3'
+  output: {}
+  resources: {}
+  successfulBuildsHistoryLimit: 5
+  failedBuildsHistoryLimit: 5
   strategy:
     type: Source
     sourceStrategy:
@@ -17,11 +50,17 @@ spec:
         kind: ImageStreamTag
         namespace: openshift
         name: 'java:openjdk-17-ubi8'
+  postCommit: {}
   source:
     type: Git
     git:
       uri: 'https://github.com/harmeet2401/MyApi.git'
-    contextDir: /
+      ref: main
+  triggers:
+    - type: ImageChange
+      imageChange: {}
+    - type: ConfigChange
+  runPolicy: Serial
 status:
   lastVersion: 1
   imageChangeTriggers:
@@ -30,4 +69,4 @@ status:
       from:
         namespace: openshift
         name: 'java:openjdk-17-ubi8'
-      lastTriggerTime: '2022-06-29T12:33:53Z'
+      lastTriggerTime: null
