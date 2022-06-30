@@ -16,11 +16,12 @@ public class ApiController {
     public String getWelcomeMsg() throws IOException {
         File file = new File("/data/data.txt");
         BufferedReader br = new BufferedReader(new FileReader(file));
-        String string;
-        while ((string = br.readLine()) != null)
-            System.out.println(string);
+        String string,str ="";
+        while ((string = br.readLine()) != null) {
+            str = string;
+        }
 
-        return string;//"!!!! welcome to my rest api deployed to Openshift using webhook!!!!";
+        return str; //"!!!! welcome to my rest api deployed to Openshift using webhook!!!!";
     }
 
     @GetMapping(path = "/User")
