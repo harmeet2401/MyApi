@@ -4,12 +4,23 @@ import com.in28mins.Myapi.ApiBeans.User;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
 @RestController
 public class ApiController {
 
     @GetMapping(path = "/hey")
-    public String getWelcomeMsg(){
-        return "!!!! welcome to my rest api deployed to Openshift using webhook!!!!";
+    public String getWelcomeMsg() throws IOException {
+        File file = new File("/data/data.txt");
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        String string;
+        while ((string = br.readLine()) != null)
+            System.out.println(string);
+
+        return string;//"!!!! welcome to my rest api deployed to Openshift using webhook!!!!";
     }
 
     @GetMapping(path = "/User")
