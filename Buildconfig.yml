@@ -5,11 +5,11 @@ metadata:
     app.openshift.io/vcs-ref: ''
     app.openshift.io/vcs-uri: 'https://github.com/harmeet2401/MyApi.git'
     openshift.io/generated-by: OpenShiftWebConsole
-  resourceVersion: '1452356073'
+  resourceVersion: '1452428922'
   name: my-api-git
   uid: 947ff2ab-c713-41b9-922c-3a741768c820
   creationTimestamp: '2022-06-30T08:00:43Z'
-  generation: 2
+  generation: 5
   managedFields:
     - manager: Go-http-client
       operation: Update
@@ -102,11 +102,11 @@ spec:
     - type: ConfigChange
   runPolicy: Serial
 status:
-  lastVersion: 1
+  lastVersion: 4
   imageChangeTriggers:
     - lastTriggeredImageID: >-
         image-registry.openshift-image-registry.svc:5000/openshift/java@sha256:210e5ce062df2cc601fb8ce4be4848fe25d87238cd44aa4abe833eb3d4893640
       from:
         namespace: openshift
         name: 'java:openjdk-17-ubi8'
-      lastTriggerTime: '2022-06-30T08:00:43Z'
+      lastTriggerTime: null

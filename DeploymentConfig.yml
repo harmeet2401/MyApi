@@ -6,16 +6,29 @@ metadata:
     app.openshift.io/vcs-ref: ''
     app.openshift.io/vcs-uri: 'https://github.com/harmeet2401/MyApi.git'
     openshift.io/generated-by: OpenShiftWebConsole
-  resourceVersion: '1452359340'
+  resourceVersion: '1452438328'
   name: my-api-git
   uid: 368cfaef-c7bd-420f-87de-9f4e462276b1
   creationTimestamp: '2022-06-30T08:00:44Z'
-  generation: 2
+  generation: 6
   managedFields:
+    - manager: openshift-controller-manager
+      operation: Update
+      apiVersion: apps.openshift.io/v1
+      time: '2022-06-30T08:01:58Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:template':
+            'f:spec':
+              'f:containers':
+                'k:{"name":"my-api-git"}':
+                  'f:image': {}
+          'f:triggers': {}
     - manager: Mozilla
       operation: Update
       apiVersion: apps.openshift.io/v1
-      time: '2022-06-30T08:00:44Z'
+      time: '2022-06-30T08:05:57Z'
       fieldsType: FieldsV1
       fieldsV1:
         'f:metadata':
@@ -80,28 +93,29 @@ metadata:
                   'f:resources': {}
                   'f:terminationMessagePath': {}
                   'f:terminationMessagePolicy': {}
+                  'f:volumeMounts':
+                    .: {}
+                    'k:{"mountPath":"/data"}':
+                      .: {}
+                      'f:mountPath': {}
+                      'f:name': {}
               'f:dnsPolicy': {}
               'f:restartPolicy': {}
               'f:schedulerName': {}
               'f:securityContext': {}
               'f:terminationGracePeriodSeconds': {}
+              'f:volumes':
+                .: {}
+                'k:{"name":"pv1"}':
+                  .: {}
+                  'f:name': {}
+                  'f:persistentVolumeClaim':
+                    .: {}
+                    'f:claimName': {}
     - manager: openshift-controller-manager
       operation: Update
       apiVersion: apps.openshift.io/v1
-      time: '2022-06-30T08:01:58Z'
-      fieldsType: FieldsV1
-      fieldsV1:
-        'f:spec':
-          'f:template':
-            'f:spec':
-              'f:containers':
-                'k:{"name":"my-api-git"}':
-                  'f:image': {}
-          'f:triggers': {}
-    - manager: openshift-controller-manager
-      operation: Update
-      apiVersion: apps.openshift.io/v1
-      time: '2022-06-30T08:02:07Z'
+      time: '2022-06-30T08:33:54Z'
       fieldsType: FieldsV1
       fieldsV1:
         'f:status':
@@ -165,7 +179,7 @@ spec:
           namespace: meet14764-dev
           name: 'my-api-git:latest'
         lastTriggeredImage: >-
-          image-registry.openshift-image-registry.svc:5000/meet14764-dev/my-api-git@sha256:23acd5c4f623ea3444d305a181e87c2d56172aa69004d2055eb14bf06efe6086
+          image-registry.openshift-image-registry.svc:5000/meet14764-dev/my-api-git@sha256:bdff5acbe6e676ded1096b8afe11248c15a637ff93c9de1343990381d002fab6
     - type: ConfigChange
   replicas: 1
   revisionHistoryLimit: 10
@@ -180,16 +194,23 @@ spec:
         app: my-api-git
         deploymentconfig: my-api-git
     spec:
+      volumes:
+        - name: pv1
+          persistentVolumeClaim:
+            claimName: pv1
       containers:
         - name: my-api-git
           image: >-
-            image-registry.openshift-image-registry.svc:5000/meet14764-dev/my-api-git@sha256:23acd5c4f623ea3444d305a181e87c2d56172aa69004d2055eb14bf06efe6086
+            image-registry.openshift-image-registry.svc:5000/meet14764-dev/my-api-git@sha256:bdff5acbe6e676ded1096b8afe11248c15a637ff93c9de1343990381d002fab6
           ports:
             - containerPort: 8080
               protocol: TCP
             - containerPort: 8443
               protocol: TCP
           resources: {}
+          volumeMounts:
+            - name: pv1
+              mountPath: /data
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
           imagePullPolicy: Always
@@ -199,14 +220,19 @@ spec:
       securityContext: {}
       schedulerName: default-scheduler
 status:
-  observedGeneration: 2
+  observedGeneration: 6
   details:
-    message: config change
+    message: image change
     causes:
-      - type: ConfigChange
+      - type: ImageChange
+        imageTrigger:
+          from:
+            kind: DockerImage
+            name: >-
+              image-registry.openshift-image-registry.svc:5000/meet14764-dev/my-api-git@sha256:bdff5acbe6e676ded1096b8afe11248c15a637ff93c9de1343990381d002fab6
   availableReplicas: 1
   unavailableReplicas: 0
-  latestVersion: 1
+  latestVersion: 5
   updatedReplicas: 1
   conditions:
     - type: Available
@@ -216,9 +242,9 @@ status:
       message: Deployment config has minimum availability.
     - type: Progressing
       status: 'True'
-      lastUpdateTime: '2022-06-30T08:02:10Z'
-      lastTransitionTime: '2022-06-30T08:02:02Z'
+      lastUpdateTime: '2022-06-30T08:37:02Z'
+      lastTransitionTime: '2022-06-30T08:36:57Z'
       reason: NewReplicationControllerAvailable
-      message: replication controller "my-api-git-1" successfully rolled out
+      message: replication controller "my-api-git-5" successfully rolled out
   replicas: 1
   readyReplicas: 1

@@ -1,0 +1,77 @@
+kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  annotations:
+    app.openshift.io/vcs-ref: ''
+    app.openshift.io/vcs-uri: 'https://github.com/harmeet2401/MyApi.git'
+    openshift.io/generated-by: OpenShiftWebConsole
+  resourceVersion: '1452431103'
+  name: my-api-git
+  uid: 1836ea73-110c-4d0b-ab93-95301f03ad2f
+  creationTimestamp: '2022-06-30T08:00:42Z'
+  generation: 1
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: image.openshift.io/v1
+      time: '2022-06-30T08:00:42Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:app.openshift.io/vcs-ref': {}
+            'f:app.openshift.io/vcs-uri': {}
+            'f:openshift.io/generated-by': {}
+          'f:labels':
+            .: {}
+            'f:app': {}
+            'f:app.kubernetes.io/component': {}
+            'f:app.kubernetes.io/instance': {}
+            'f:app.kubernetes.io/name': {}
+            'f:app.kubernetes.io/part-of': {}
+            'f:app.openshift.io/runtime': {}
+            'f:app.openshift.io/runtime-version': {}
+  namespace: meet14764-dev
+  labels:
+    app: my-api-git
+    app.kubernetes.io/component: my-api-git
+    app.kubernetes.io/instance: my-api-git
+    app.kubernetes.io/name: my-api-git
+    app.kubernetes.io/part-of: my-api-git-app
+    app.openshift.io/runtime: java
+    app.openshift.io/runtime-version: openjdk-17-ubi8
+spec:
+  lookupPolicy:
+    local: false
+status:
+  dockerImageRepository: 'image-registry.openshift-image-registry.svc:5000/meet14764-dev/my-api-git'
+  publicDockerImageRepository: >-
+    default-route-openshift-image-registry.apps.sandbox.x8i5.p1.openshiftapps.com/meet14764-dev/my-api-git
+  tags:
+    - tag: latest
+      items:
+        - created: '2022-06-30T08:33:49Z'
+          dockerImageReference: >-
+            image-registry.openshift-image-registry.svc:5000/meet14764-dev/my-api-git@sha256:bdff5acbe6e676ded1096b8afe11248c15a637ff93c9de1343990381d002fab6
+          image: >-
+            sha256:bdff5acbe6e676ded1096b8afe11248c15a637ff93c9de1343990381d002fab6
+          generation: 1
+        - created: '2022-06-30T08:20:54Z'
+          dockerImageReference: >-
+            image-registry.openshift-image-registry.svc:5000/meet14764-dev/my-api-git@sha256:505bc493472ef7912c0bcb809e8eadf0defa7373cdeb4909629b4c0bd4d97007
+          image: >-
+            sha256:505bc493472ef7912c0bcb809e8eadf0defa7373cdeb4909629b4c0bd4d97007
+          generation: 1
+        - created: '2022-06-30T08:18:25Z'
+          dockerImageReference: >-
+            image-registry.openshift-image-registry.svc:5000/meet14764-dev/my-api-git@sha256:8b304eb292e5db77326c39df0c5763633311802eda082f35f8580980e09028e6
+          image: >-
+            sha256:8b304eb292e5db77326c39df0c5763633311802eda082f35f8580980e09028e6
+          generation: 1
+        - created: '2022-06-30T08:01:58Z'
+          dockerImageReference: >-
+            image-registry.openshift-image-registry.svc:5000/meet14764-dev/my-api-git@sha256:23acd5c4f623ea3444d305a181e87c2d56172aa69004d2055eb14bf06efe6086
+          image: >-
+            sha256:23acd5c4f623ea3444d305a181e87c2d56172aa69004d2055eb14bf06efe6086
+          generation: 1

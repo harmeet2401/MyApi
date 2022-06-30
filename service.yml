@@ -1,9 +1,66 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: api-rest
+  name: my-api-git
+  namespace: meet14764-dev
+  uid: 5ed22a5b-ba50-4079-9b95-ee8cdb4672f2
+  resourceVersion: '1452356140'
+  creationTimestamp: '2022-06-30T08:00:44Z'
+  labels:
+    app: my-api-git
+    app.kubernetes.io/component: my-api-git
+    app.kubernetes.io/instance: my-api-git
+    app.kubernetes.io/name: my-api-git
+    app.kubernetes.io/part-of: my-api-git-app
+    app.openshift.io/runtime: java
+    app.openshift.io/runtime-version: openjdk-17-ubi8
+  annotations:
+    app.openshift.io/vcs-ref: ''
+    app.openshift.io/vcs-uri: 'https://github.com/harmeet2401/MyApi.git'
+    openshift.io/generated-by: OpenShiftWebConsole
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: v1
+      time: '2022-06-30T08:00:44Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:app.openshift.io/vcs-ref': {}
+            'f:app.openshift.io/vcs-uri': {}
+            'f:openshift.io/generated-by': {}
+          'f:labels':
+            .: {}
+            'f:app': {}
+            'f:app.kubernetes.io/component': {}
+            'f:app.kubernetes.io/instance': {}
+            'f:app.kubernetes.io/name': {}
+            'f:app.kubernetes.io/part-of': {}
+            'f:app.openshift.io/runtime': {}
+            'f:app.openshift.io/runtime-version': {}
+        'f:spec':
+          'f:internalTrafficPolicy': {}
+          'f:ports':
+            .: {}
+            'k:{"port":8080,"protocol":"TCP"}':
+              .: {}
+              'f:name': {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+            'k:{"port":8443,"protocol":"TCP"}':
+              .: {}
+              'f:name': {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+          'f:selector': {}
+          'f:sessionAffinity': {}
+          'f:type': {}
 spec:
-  clusterIP: 172.30.211.20
+  clusterIP: 172.30.147.237
   ipFamilies:
     - IPv4
   ports:
@@ -17,10 +74,12 @@ spec:
       targetPort: 8443
   internalTrafficPolicy: Cluster
   clusterIPs:
-    - 172.30.211.20
+    - 172.30.147.237
   type: ClusterIP
+  ipFamilyPolicy: SingleStack
+  sessionAffinity: None
   selector:
-    app: api-rest
-    deploymentconfig: api-rest
+    app: my-api-git
+    deploymentconfig: my-api-git
 status:
   loadBalancer: {}

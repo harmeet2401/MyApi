@@ -1,12 +1,65 @@
 kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
-  name: app-rest-route
+  name: my-api-git
+  namespace: meet14764-dev
+  uid: 939567b2-1ebd-4414-bdc5-9fdf75b9be85
+  resourceVersion: '1452356148'
+  creationTimestamp: '2022-06-30T08:00:44Z'
+  labels:
+    app: my-api-git
+    app.kubernetes.io/component: my-api-git
+    app.kubernetes.io/instance: my-api-git
+    app.kubernetes.io/name: my-api-git
+    app.kubernetes.io/part-of: my-api-git-app
+    app.openshift.io/runtime: java
+    app.openshift.io/runtime-version: openjdk-17-ubi8
+  annotations:
+    openshift.io/host.generated: 'true'
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: route.openshift.io/v1
+      time: '2022-06-30T08:00:44Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:app': {}
+            'f:app.kubernetes.io/component': {}
+            'f:app.kubernetes.io/instance': {}
+            'f:app.kubernetes.io/name': {}
+            'f:app.kubernetes.io/part-of': {}
+            'f:app.openshift.io/runtime': {}
+            'f:app.openshift.io/runtime-version': {}
+        'f:spec':
+          'f:port':
+            .: {}
+            'f:targetPort': {}
+          'f:tls':
+            .: {}
+            'f:insecureEdgeTerminationPolicy': {}
+            'f:termination': {}
+          'f:to':
+            'f:kind': {}
+            'f:name': {}
+            'f:weight': {}
+          'f:wildcardPolicy': {}
+    - manager: openshift-router
+      operation: Update
+      apiVersion: route.openshift.io/v1
+      time: '2022-06-30T08:00:44Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:ingress': {}
+      subresource: status
 spec:
-  host: app-rest-route-meet14764-dev.apps.sandbox.x8i5.p1.openshiftapps.com
+  host: my-api-git-meet14764-dev.apps.sandbox.x8i5.p1.openshiftapps.com
   to:
     kind: Service
-    name: api-rest
+    name: my-api-git
     weight: 100
   port:
     targetPort: 8080-tcp
@@ -16,11 +69,11 @@ spec:
   wildcardPolicy: None
 status:
   ingress:
-    - host: pp-rest-route-meet14764-dev.apps.sandbox.x8i5.p1.openshiftapps.com
+    - host: my-api-git-meet14764-dev.apps.sandbox.x8i5.p1.openshiftapps.com
       routerName: default
       conditions:
         - type: Admitted
           status: 'True'
-          lastTransitionTime: '2022-06-29T12:33:54Z'
+          lastTransitionTime: '2022-06-30T08:00:44Z'
       wildcardPolicy: None
       routerCanonicalHostname: router-default.apps.sandbox.x8i5.p1.openshiftapps.com
