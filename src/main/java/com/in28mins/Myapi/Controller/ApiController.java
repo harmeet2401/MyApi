@@ -29,7 +29,7 @@ public class ApiController {
     {
             User user = new User();
             user.setAdd("Plotno 63 wz 31 b3/8 ff navyug ");
-            user.setName("HARMEET SINGH - Phoenix Dt3 ");
+            user.setName("HARMEET SINGH - Phoenix Dt ");
             return user;
     }
 }
