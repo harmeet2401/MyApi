@@ -1,0 +1,283 @@
+apiVersion: v1
+items:
+- apiVersion: apps.openshift.io/v1
+  kind: DeploymentConfig
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+    creationTimestamp: "2022-07-02T10:54:17Z"
+    generation: 2
+    labels:
+      app: myapi
+      app.kubernetes.io/component: myapi
+      app.kubernetes.io/instance: myapi
+    name: myapi
+    namespace: meet14764-dev
+    resourceVersion: "1459129829"
+    uid: d434a7b3-507f-4e27-979e-7985e1b28012
+  spec:
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      deploymentconfig: myapi
+    strategy:
+      activeDeadlineSeconds: 21600
+      resources: {}
+      rollingParams:
+        intervalSeconds: 1
+        maxSurge: 25%
+        maxUnavailable: 25%
+        timeoutSeconds: 600
+        updatePeriodSeconds: 1
+      type: Rolling
+    template:
+      metadata:
+        annotations:
+          openshift.io/generated-by: OpenShiftNewApp
+        creationTimestamp: null
+        labels:
+          deploymentconfig: myapi
+      spec:
+        containers:
+        - image: image-registry.openshift-image-registry.svc:5000/meet14764-dev/myapi@sha256:b22f69268f6879770562197fde78c04cddf7c931d61818b46c8ca63fef07b9df
+          imagePullPolicy: Always
+          name: myapi
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+    test: false
+    triggers:
+    - type: ConfigChange
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - myapi
+        from:
+          kind: ImageStreamTag
+          name: myapi:latest
+          namespace: meet14764-dev
+        lastTriggeredImage: image-registry.openshift-image-registry.svc:5000/meet14764-dev/myapi@sha256:b22f69268f6879770562197fde78c04cddf7c931d61818b46c8ca63fef07b9df
+      type: ImageChange
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2022-07-02T10:56:36Z"
+      lastUpdateTime: "2022-07-02T10:56:36Z"
+      message: Deployment config has minimum availability.
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2022-07-02T10:56:33Z"
+      lastUpdateTime: "2022-07-02T10:56:39Z"
+      message: replication controller "myapi-1" successfully rolled out
+      reason: NewReplicationControllerAvailable
+      status: "True"
+      type: Progressing
+    details:
+      causes:
+      - type: ConfigChange
+      message: config change
+    latestVersion: 1
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+    unavailableReplicas: 0
+    updatedReplicas: 1
+- apiVersion: build.openshift.io/v1
+  kind: BuildConfig
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+    creationTimestamp: "2022-07-02T10:54:16Z"
+    generation: 2
+    labels:
+      app: myapi
+      app.kubernetes.io/component: myapi
+      app.kubernetes.io/instance: myapi
+    name: myapi
+    namespace: meet14764-dev
+    resourceVersion: "1459124669"
+    uid: ca90d147-4d4c-4bdb-8e3e-63a18bd721b2
+  spec:
+    failedBuildsHistoryLimit: 5
+    nodeSelector: null
+    output:
+      to:
+        kind: ImageStreamTag
+        name: myapi:latest
+    postCommit: {}
+    resources: {}
+    runPolicy: Serial
+    source:
+      git:
+        uri: https://github.com/harmeet2401/MyApi.git
+      type: Git
+    strategy:
+      dockerStrategy:
+        from:
+          kind: ImageStreamTag
+          name: openjdk:11-jdk
+      type: Docker
+    successfulBuildsHistoryLimit: 5
+    triggers:
+    - github:
+        secret: QfOa8r8A0kZHW2UNnlZ7
+      type: GitHub
+    - generic:
+        secret: NqPK44UAX41S5jQdj6j5
+      type: Generic
+    - type: ConfigChange
+    - imageChange: {}
+      type: ImageChange
+  status:
+    imageChangeTriggers:
+    - from:
+        name: openjdk:11-jdk
+      lastTriggerTime: "2022-07-02T10:54:17Z"
+      lastTriggeredImageID: openjdk@sha256:bc0af19c7c4f492fe6ff0c1d1c8c0e5dd90ab801385b220347bb91dbe2b4094f
+    lastVersion: 1
+- apiVersion: image.openshift.io/v1
+  kind: ImageStream
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+    creationTimestamp: "2022-07-02T10:54:16Z"
+    generation: 1
+    labels:
+      app: myapi
+      app.kubernetes.io/component: myapi
+      app.kubernetes.io/instance: myapi
+    name: myapi
+    namespace: meet14764-dev
+    resourceVersion: "1459129384"
+    uid: 5d4798b4-f91f-4bd6-a539-0cd07b17d97c
+  spec:
+    lookupPolicy:
+      local: false
+  status:
+    dockerImageRepository: image-registry.openshift-image-registry.svc:5000/meet14764-dev/myapi
+    publicDockerImageRepository: default-route-openshift-image-registry.apps.sandbox.x8i5.p1.openshiftapps.com/meet14764-dev/myapi
+    tags:
+    - items:
+      - created: "2022-07-02T10:56:29Z"
+        dockerImageReference: image-registry.openshift-image-registry.svc:5000/meet14764-dev/myapi@sha256:b22f69268f6879770562197fde78c04cddf7c931d61818b46c8ca63fef07b9df
+        generation: 1
+        image: sha256:b22f69268f6879770562197fde78c04cddf7c931d61818b46c8ca63fef07b9df
+      tag: latest
+- apiVersion: image.openshift.io/v1
+  kind: ImageStream
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+      openshift.io/image.dockerRepositoryCheck: "2022-07-02T10:54:16Z"
+    creationTimestamp: "2022-07-02T10:54:16Z"
+    generation: 2
+    labels:
+      app: myapi
+      app.kubernetes.io/component: myapi
+      app.kubernetes.io/instance: myapi
+    name: openjdk
+    namespace: meet14764-dev
+    resourceVersion: "1459124644"
+    uid: 2764e0f6-c652-4524-bb01-da4050c93622
+  spec:
+    lookupPolicy:
+      local: false
+    tags:
+    - annotations:
+        openshift.io/imported-from: openjdk:11-jdk
+      from:
+        kind: DockerImage
+        name: openjdk:11-jdk
+      generation: 2
+      importPolicy: {}
+      name: 11-jdk
+      referencePolicy:
+        type: Source
+  status:
+    dockerImageRepository: image-registry.openshift-image-registry.svc:5000/meet14764-dev/openjdk
+    publicDockerImageRepository: default-route-openshift-image-registry.apps.sandbox.x8i5.p1.openshiftapps.com/meet14764-dev/openjdk
+    tags:
+    - items:
+      - created: "2022-07-02T10:54:16Z"
+        dockerImageReference: openjdk@sha256:bc0af19c7c4f492fe6ff0c1d1c8c0e5dd90ab801385b220347bb91dbe2b4094f
+        generation: 2
+        image: sha256:bc0af19c7c4f492fe6ff0c1d1c8c0e5dd90ab801385b220347bb91dbe2b4094f
+      tag: 11-jdk
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+    creationTimestamp: "2022-07-02T10:54:17Z"
+    labels:
+      app: myapi
+      app.kubernetes.io/component: myapi
+      app.kubernetes.io/instance: myapi
+    name: myapi
+    namespace: meet14764-dev
+    resourceVersion: "1459124698"
+    uid: f6cc2d93-76ae-4380-b8bc-6f059b7ef2c8
+  spec:
+    clusterIP: 172.30.98.232
+    clusterIPs:
+    - 172.30.98.232
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - name: 8080-tcp
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      deploymentconfig: myapi
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: route.openshift.io/v1
+  kind: Route
+  metadata:
+    annotations:
+      openshift.io/host.generated: "true"
+    creationTimestamp: "2022-07-02T10:59:22Z"
+    labels:
+      app: myapi
+      app.kubernetes.io/component: myapi
+      app.kubernetes.io/instance: myapi
+    name: myapi
+    namespace: meet14764-dev
+    resourceVersion: "1459135819"
+    uid: ff49a599-1cd0-4e31-b9eb-e5d93cb3793f
+  spec:
+    host: myapi-meet14764-dev.apps.sandbox.x8i5.p1.openshiftapps.com
+    port:
+      targetPort: 8080-tcp
+    to:
+      kind: Service
+      name: myapi
+      weight: 100
+    wildcardPolicy: None
+  status:
+    ingress:
+    - conditions:
+      - lastTransitionTime: "2022-07-02T10:59:22Z"
+        status: "True"
+        type: Admitted
+      host: myapi-meet14764-dev.apps.sandbox.x8i5.p1.openshiftapps.com
+      routerCanonicalHostname: router-default.apps.sandbox.x8i5.p1.openshiftapps.com
+      routerName: default
+      wildcardPolicy: None
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
